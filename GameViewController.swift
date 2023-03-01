@@ -10,10 +10,23 @@ import UIKit
 
 class GameViewController: UIViewController{
     
+    @IBOutlet var points_label: UILabel!
+    let preferences = UserDefaults.standard
+
+    
+    override func viewDidLoad() {
+        points_label.text = "Points: \(preferences.string(forKey: "points") ?? "0")"
+    }
+    
     lazy var game = ConcentrationGame(numberOfPairsOfCards: (ButtonCollection.count + 1) / 2)
     
-    var emojiCollection = ["👑", "🕸", "🐲", "⚱️", "🕌", "🤴🏽", "☠️", "🏺"]
+    
+    var emojiCollection = ["👑", "🕸", "🐲", "⚱️", "🕌", "🤴🏽", "☠️", "🏺", "🇪🇬", "🐪", "🐘", "🗿", "🔯", "🔅", "🔆", "🐍", "🐆", "🐄", "💎", "🗝️", "💰"]
+    
+    
     var emojiDic = [Int:String]()
+    
+
     
     func emojiIdentifier(for card: Card)->String{
         if emojiDic[card.identifier] == nil{
@@ -23,19 +36,17 @@ class GameViewController: UIViewController{
         return emojiDic[card.identifier] ?? "?"
     }
     
-//    @IBOutlet var ButtonCollection: [UIButton]!
     
     func updateViewFromModel(){
         for index in ButtonCollection.indices{
             let button = ButtonCollection[index]
             let card = game.cards[index]
             if card.isFaceUp{
-                print("if")
                 button.setTitle(emojiIdentifier(for: card), for: .normal)
                 button.backgroundColor = UIColor.white
+                button.isHidden = false
             }
             else{
-//                print("else")
                 button.setTitle("", for: .normal)
                 button.backgroundColor = card.isMatched ? UIColor.white : UIColor.systemBlue
             }
@@ -52,7 +63,7 @@ class GameViewController: UIViewController{
             game.chooseCard(at: buttonIndex)
             updateViewFromModel()
         }
-        
+        points_label.text = "Points: \(preferences.string(forKey: "points") ?? "0")"
     }
 
 }
