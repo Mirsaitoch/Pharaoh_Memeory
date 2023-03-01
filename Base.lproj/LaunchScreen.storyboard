@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="01J-lp-oVM">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="EHf-IW-A2E">
+            <objects>
+                <viewController id="01J-lp-oVM" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Ze5-6b-2t3">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4FL-nY-Pas">
+                                <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rlU-nG-5fM">
+                                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                                        <subviews>
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="pharaoh" translatesAutoresizingMaskIntoConstraints="NO" id="taw-mL-wP1">
+                                                <rect key="frame" x="124.66666666666669" y="354" width="144" height="144"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="144" id="5aH-bh-phc"/>
+                                                    <constraint firstAttribute="height" constant="144" id="w4o-1H-CEY"/>
+                                                </constraints>
+                                            </imageView>
+                                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" ambiguous="YES" misplaced="YES" animating="YES" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="q4T-MM-IOq">
+                                                <rect key="frame" x="160" y="738" width="72" height="72"/>
+                                                <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="72" id="Dg4-Ie-kT0"/>
+                                                    <constraint firstAttribute="height" constant="72" id="eAb-nP-Ar8"/>
+                                                </constraints>
+                                            </activityIndicatorView>
+                                        </subviews>
+                                        <color key="backgroundColor" systemColor="systemOrangeColor"/>
+                                        <constraints>
+                                            <constraint firstItem="taw-mL-wP1" firstAttribute="centerY" secondItem="rlU-nG-5fM" secondAttribute="centerY" id="7Hy-SW-sD5"/>
+                                            <constraint firstItem="q4T-MM-IOq" firstAttribute="centerX" secondItem="rlU-nG-5fM" secondAttribute="centerX" id="8wm-rI-e7A"/>
+                                            <constraint firstItem="taw-mL-wP1" firstAttribute="centerX" secondItem="rlU-nG-5fM" secondAttribute="centerX" id="OIL-1x-NJ3"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstItem="rlU-nG-5fM" firstAttribute="leading" secondItem="4FL-nY-Pas" secondAttribute="leading" id="axk-kD-aKp"/>
+                                    <constraint firstAttribute="bottom" secondItem="rlU-nG-5fM" secondAttribute="bottom" id="qVH-Qx-ii5"/>
+                                    <constraint firstItem="rlU-nG-5fM" firstAttribute="top" secondItem="4FL-nY-Pas" secondAttribute="top" id="wN8-Ka-jki"/>
+                                    <constraint firstAttribute="trailing" secondItem="rlU-nG-5fM" secondAttribute="trailing" id="wlR-iF-c5c"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="4FL-nY-Pas" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="Ouw-bl-aQO"/>
+                            <constraint firstItem="4FL-nY-Pas" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="Qkd-mh-URE"/>
+                            <constraint firstAttribute="bottom" secondItem="4FL-nY-Pas" secondAttribute="bottom" id="n88-2l-prg"/>
+                            <constraint firstItem="4FL-nY-Pas" firstAttribute="top" secondItem="Ze5-6b-2t3" secondAttribute="top" id="rkE-0x-Ncg"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="iYj-Kq-Ea1" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="52.671755725190835" y="374.64788732394368"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="pharaoh" width="512" height="512"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemOrangeColor">
+            <color red="1" green="0.58431372549019611" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+    </resources>
+</document>
