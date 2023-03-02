@@ -32,7 +32,6 @@ class ConcentrationGame{
                     cards[ind].isFaceUp = false
                 }
                 cards[index].isFaceUp = true
-                print(cards[index])
                 indexOfOneOnlyFaceUpCard = index
             }
         }
@@ -64,14 +63,11 @@ class ConcentrationGame{
             cards.remove(at: freeIndexFirst)
             cards.insert(card, at: freeIndexFirst)
             mm_index.remove(at: randomIndexFirst)
-            print(mm_index)
             let randomIndexSecond = Int(arc4random_uniform(UInt32(mm_index.count - 1)))
             let freeIndexSecond = mm_index[randomIndexSecond]
             cards.remove(at: freeIndexSecond)
             cards.insert(card, at: freeIndexSecond)
             mm_index.remove(at: randomIndexSecond)
-            print(mm_index)
-
         }
     }
     
