@@ -8,11 +8,11 @@
 import Foundation
 
 class ConcentrationGame{
-    var cards = Array(repeating: Card(), count: 16)
-    
-    var mm_index = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
-    
     let preferences = UserDefaults.standard
+
+    var cards = [Card]()
+    var mm_index = [Int]()
+           
     
     var indexOfOneOnlyFaceUpCard:Int?
 
@@ -39,8 +39,24 @@ class ConcentrationGame{
     }
         
     
-    
     init(numberOfPairsOfCards: Int){
+        switch(preferences.string(forKey: "level")){
+            case "1":
+                cards = Array(repeating: Card(), count: 8)
+                mm_index = Array(0...7)
+                break
+            case "2":
+                cards = Array(repeating: Card(), count: 16)
+                mm_index = Array(0...15)
+                break
+            case "3":
+                cards = Array(repeating: Card(), count: 20)
+                mm_index = Array(0...19)
+                break
+            default:
+                break
+        }
+        
         for _ in 1...numberOfPairsOfCards{
             let card = Card()
             let randomIndexFirst = Int(arc4random_uniform(UInt32(mm_index.count - 1)))
