@@ -8,6 +8,7 @@
 import Foundation
 import UIKit
 
+
 class GameViewController: UIViewController{
     
     @IBOutlet var points_label: UILabel!
@@ -27,7 +28,10 @@ class GameViewController: UIViewController{
     lazy var game = ConcentrationGame(numberOfPairsOfCards: (ButtonCollection.count + 1) / 2)
     
     var emojiCollection = ["👑", "🕸", "🐲", "⚱️", "🕌", "🤴🏽", "☠️", "🏺", "🇪🇬", "🐪", "🐘", "🗿", "🔯", "🔅", "🔆", "🐍", "🐆", "🐄", "💎", "🗝️", "💰"]
-    var emojiDic = [Int:String]()
+    
+    var cardIcons = [UIImage(named: "Image1.png"), UIImage(named: "Image2.png"), UIImage(named: "Image3.png"), UIImage(named: "Image4.png"),UIImage(named: "Image5.png"), UIImage(named: "Image6.png"), UIImage(named: "Image7.png"), UIImage(named: "Image8.png"), UIImage(named: "Image9.png"), UIImage(named: "Image10.png")]
+    
+    var emojiDic = [Int:UIImage]()
     
     override func viewDidLoad() {
         switch(level){
@@ -55,19 +59,15 @@ class GameViewController: UIViewController{
         default:
             break
         }
-        
         points_label.text = "Points: \(preferences.string(forKey: "points") ?? "0")"
-                
-        
- 
     }
         
-    func emojiIdentifier(for card: Card)->String{
+    func emojiIdentifier(for card: Card)->UIImage{
         if emojiDic[card.identifier] == nil{
-            let randomIndex = Int(arc4random_uniform(UInt32(emojiCollection.count)))
-            emojiDic[card.identifier] = emojiCollection.remove(at: randomIndex)
+            let randomIndex = Int(arc4random_uniform(UInt32(cardIcons.count)))
+            emojiDic[card.identifier] = cardIcons.remove(at: randomIndex)
         }
-        return emojiDic[card.identifier] ?? "?"
+        return emojiDic[card.identifier] ?? UIImage(named: "Image1.png")!
     }
         
     func updateViewFromModel(){
@@ -78,13 +78,17 @@ class GameViewController: UIViewController{
                 let card = game.cards[index]
                 if card.isFaceUp{
                     faceUpCard += 1
-                    button.backgroundColor = UIColor.white
-                    button.setTitle(emojiIdentifier(for: card), for: .normal)
+                    let image = emojiIdentifier(for: card)
+                    let scaledImage = image.withRenderingMode(.alwaysOriginal).resized(to: CGSize(width: 80, height: 80))
+                    button.setImage(scaledImage, for: .normal)
+                    button.contentMode = .center
+                    button.backgroundColor = UIColor.clear
                     button.isHidden = false
                 }
                 else{
-                    button.setTitle("", for: .normal)
                     countOfUsedCards = card.isMatched ? (countOfUsedCards - 1) : countOfUsedCards
+                    button.setImage(nil, for: .normal)
+                    button.setBackgroundImage(nil, for: .normal)
                     button.backgroundColor = card.isMatched ? UIColor.clear : UIColor.white
                 }
             }
@@ -100,16 +104,15 @@ class GameViewController: UIViewController{
         }
         
     func winAction(){
-        let alert = UIAlertController(title: "Your title", message: "Your message", preferredStyle: .alert)
+        let alert = UIAlertController(title: "Congratulations!", message: "Level completed", preferredStyle: .alert)
             
-             let ok = UIAlertAction(title: "OK", style: .default, handler: { action in
+        let cancel = UIAlertAction(title: "Back to menu", style: .cancel, handler: { action in
+            self.dismiss(animated: true)
              })
-             alert.addAction(ok)
-             let cancel = UIAlertAction(title: "Cancel", style: .default, handler: { action in
-             })
-             alert.addAction(cancel)
-             DispatchQueue.main.async(execute: {
-                self.present(alert, animated: true)
+        alert.addAction(cancel)
+        DispatchQueue.main.async(execute: {
+        self.present(alert, animated: true)
+            
         })
     }
     
@@ -126,4 +129,6 @@ class GameViewController: UIViewController{
 
         
 }
+
+
 

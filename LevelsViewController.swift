@@ -12,7 +12,12 @@ import UIKit
 class LevelsViewController: UIViewController{
     
     let preferences = UserDefaults.standard
-
+    
+    
+    @IBAction func back(_ sender: Any) {
+        dismiss(animated: true)
+    }
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "level_1" {
             preferences.set("1", forKey: "level")
