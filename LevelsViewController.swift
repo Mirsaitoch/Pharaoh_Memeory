@@ -11,9 +11,15 @@ import UIKit
 
 class LevelsViewController: UIViewController{
     
+    
+    override func viewWillAppear(_ animated: Bool) {
+        back.setTitle("", for: .normal)
+    }
+    
     let preferences = UserDefaults.standard
     
     
+    @IBOutlet var back: UIButton!
     @IBAction func back(_ sender: Any) {
         dismiss(animated: true)
     }

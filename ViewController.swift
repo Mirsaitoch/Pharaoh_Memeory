@@ -17,6 +17,12 @@ class ViewController: UIViewController {
         
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        let preferences = UserDefaults.standard
+        let points = preferences.integer(forKey: "points")
+        pointns_label.text = "Points: \(points)"
+    }
+    
     
     
     
