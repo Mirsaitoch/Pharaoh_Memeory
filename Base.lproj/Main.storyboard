@@ -114,30 +114,48 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <wkWebView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gZN-ls-q2g">
-                                <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                                <rect key="frame" x="0.0" y="103" width="393" height="749"/>
                                 <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <wkWebViewConfiguration key="configuration">
                                     <audiovisualMediaTypes key="mediaTypesRequiringUserActionForPlayback" none="YES"/>
                                     <wkPreferences key="preferences"/>
                                 </wkWebViewConfiguration>
                             </wkWebView>
+                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0GE-qE-cXI">
+                                <rect key="frame" x="0.0" y="59" width="393" height="44"/>
+                                <color key="barTintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <items>
+                                    <navigationItem id="fU0-SG-Lfv">
+                                        <barButtonItem key="leftBarButtonItem" title="Item" image="chevron.backward" catalog="system" id="1Co-Li-A94">
+                                            <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <connections>
+                                                <action selector="back:" destination="9Wd-Xj-3rY" id="hqp-0C-Y9W"/>
+                                            </connections>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="DKS-fO-rO6"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="gZN-ls-q2g" firstAttribute="trailing" secondItem="DKS-fO-rO6" secondAttribute="trailing" id="0Ps-qx-SHB"/>
                             <constraint firstAttribute="bottom" secondItem="gZN-ls-q2g" secondAttribute="bottom" id="Ay2-2p-P8p"/>
-                            <constraint firstItem="gZN-ls-q2g" firstAttribute="top" secondItem="cjq-fT-dxR" secondAttribute="top" id="YK3-O3-Rs9"/>
+                            <constraint firstItem="0GE-qE-cXI" firstAttribute="trailing" secondItem="DKS-fO-rO6" secondAttribute="trailing" id="IK8-Qd-5fq"/>
+                            <constraint firstItem="gZN-ls-q2g" firstAttribute="top" secondItem="0GE-qE-cXI" secondAttribute="bottom" id="WLm-Dd-yzH"/>
                             <constraint firstItem="gZN-ls-q2g" firstAttribute="leading" secondItem="DKS-fO-rO6" secondAttribute="leading" id="bYa-8D-tYL"/>
+                            <constraint firstItem="0GE-qE-cXI" firstAttribute="top" secondItem="DKS-fO-rO6" secondAttribute="top" id="lIP-yU-vl8"/>
+                            <constraint firstItem="0GE-qE-cXI" firstAttribute="leading" secondItem="DKS-fO-rO6" secondAttribute="leading" id="mbr-DV-Dpw"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="navBarTitle" destination="fU0-SG-Lfv" id="bpx-dF-Egy"/>
                         <outlet property="webView" destination="gZN-ls-q2g" id="hAA-Rq-mo2"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="BjC-Xt-OCi" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="923" y="-11"/>
+            <point key="canvasLocation" x="922.90076335877859" y="-11.267605633802818"/>
         </scene>
         <!--Levels View Controller-->
         <scene sceneID="qdd-bX-twM">
@@ -215,7 +233,7 @@
                                 <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" subtitle="">
-                                    <backgroundConfiguration key="background" image="Image 1"/>
+                                    <backgroundConfiguration key="background" image="chevron.backward" catalog="system"/>
                                 </buttonConfiguration>
                                 <connections>
                                     <action selector="back:" destination="CcA-vc-YxM" eventType="touchUpInside" id="dSf-9h-7B6"/>
@@ -268,7 +286,7 @@
                                 <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain">
-                                    <backgroundConfiguration key="background" image="Image 1"/>
+                                    <backgroundConfiguration key="background" image="chevron.backward" catalog="system"/>
                                 </buttonConfiguration>
                                 <connections>
                                     <action selector="back:" destination="CcA-vc-YxM" eventType="touchUpInside" id="LPE-FC-Nre"/>
@@ -988,9 +1006,9 @@
     </inferredMetricsTieBreakers>
     <resources>
         <image name="Image" width="600" height="586"/>
-        <image name="Image 1" width="40" height="68"/>
         <image name="bg" width="428" height="926"/>
         <image name="bg_button" width="352" height="50"/>
+        <image name="chevron.backward" catalog="system" width="97" height="128"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
