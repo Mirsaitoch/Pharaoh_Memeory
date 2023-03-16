@@ -25,6 +25,11 @@ class LevelsViewController: UIViewController{
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "level_0" {
+            preferences.set("0", forKey: "level")
+            guard segue.identifier == "level_0" else { return }
+            guard let destination = segue.destination as? GameViewController else { return }
+            destination.level = "0"        }
         if segue.identifier == "level_1" {
             preferences.set("1", forKey: "level")
             guard segue.identifier == "level_1" else { return }

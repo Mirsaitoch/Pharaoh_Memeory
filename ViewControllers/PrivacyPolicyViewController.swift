@@ -18,12 +18,11 @@ class PrivacyPolicyViewController: UIViewController,  WKNavigationDelegate {
         dismiss(animated: true)
     }
     
-    
-    
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-        let url = URL(string: "https://www.google.com")
+        let operationQueue = OperationQueue()
+
+        let url = URL(string: "https://www.termsfeed.com/live/a68e0cb7-3ee7-4d32-8df1-333748145388")
         let request = URLRequest(url: url!)
         webView.load(request)
         

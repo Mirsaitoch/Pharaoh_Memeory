@@ -13,9 +13,11 @@ class GameViewController: UIViewController{
     
     @IBOutlet var points_label: UILabel!
     var ButtonCollection = [UIButton]()
+    @IBOutlet var ButtonCollection0: [UIButton]!
     @IBOutlet var ButtonCollection1: [UIButton]!
     @IBOutlet var ButtonCollection2: [UIButton]!
     @IBOutlet var ButtonCollection3: [UIButton]!
+    @IBOutlet var SV0: UIStackView!
     @IBOutlet var SV1: UIStackView!
     @IBOutlet var SV2: UIStackView!
     @IBOutlet var SV3: UIStackView!
@@ -34,7 +36,18 @@ class GameViewController: UIViewController{
     var emojiDic = [Int:UIImage]()
     
     override func viewDidLoad() {
+        points_label.text = "Points: \(preferences.string(forKey: "points") ?? "0")"
+
         switch(level){
+        case "0":
+            SV0.isHidden = false
+            ButtonCollection = ButtonCollection0
+            for index in ButtonCollection0.indices{
+                let button = ButtonCollection0[index]
+                button.layer.cornerRadius = 10}
+            points_label.text = "Level 0 (Training)"
+
+            break
         case "1":
             SV1.isHidden = false
             ButtonCollection = ButtonCollection1
@@ -59,7 +72,6 @@ class GameViewController: UIViewController{
         default:
             break
         }
-        points_label.text = "Points: \(preferences.string(forKey: "points") ?? "0")"
     }
         
     func emojiIdentifier(for card: Card)->UIImage{

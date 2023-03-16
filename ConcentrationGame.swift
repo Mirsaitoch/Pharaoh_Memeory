@@ -20,7 +20,9 @@ class ConcentrationGame{
         if !cards[index].isMatched{
             if let matchingIndex = indexOfOneOnlyFaceUpCard, matchingIndex != index{
                 if cards[matchingIndex].identifier == cards[index].identifier{
-                    preferences.set(preferences.integer(forKey: "points")+10, forKey: "points")
+                    if preferences.string(forKey: "level") != "0"{
+                        preferences.set(preferences.integer(forKey: "points")+10, forKey: "points")
+                    }
                     cards[matchingIndex].isMatched = true
                     cards[index].isMatched = true
                 }
@@ -40,6 +42,10 @@ class ConcentrationGame{
     
     init(numberOfPairsOfCards: Int){
         switch(preferences.string(forKey: "level")){
+            case "0":
+                cards = Array(repeating: Card(), count: 4)
+                mm_index = Array(0...3)
+                break
             case "1":
                 cards = Array(repeating: Card(), count: 8)
                 mm_index = Array(0...7)
